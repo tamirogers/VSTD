@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Very Simple To Do </title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/app/styles/styles.css">
+    <!-- endinject -->
+</head>
+
+<body background="app/styles/images/paper.jpg" ng-controller='MainController'>
+    <div class="container">
+        <h1>To Do List</h1>
+        </select>
+        <div class "addcontent">
+            <!--   ng-model is a directive moving data from the view into the model, stores the new todo added by user.  'name' holds the properties from the array.  ng-click fires the newTodo function button onclick which adds the data   -->
+            <input ng-model='name' \>
+            <button type="button" class="btn btn-primary" ng-click='newTodo()'>Add Item</button>
+            <div>
+                <br> </div>
+        </div>
+        <!--         <div class="alert2"> -->
+        <div class="alert alert-info">
+            <p>Sort Type Selected: {{ sortType }}</p>
+            <!--     <p>Sort Reverse: {{ sortReverse }}</p> -->
+            <!--   <p>Search Query: {{ searchFilerTerm }}</p> -->
+        </div>
+        <div>
+            <!--      the ng-click buttons call the sortType function, which was defined on js  -->
+            <button href='#' ng-click="sortType ='name'">
+                Sort by Name
+            </button>
+            <button href='#' ng-click="sortType ='priority'">
+                Sort by Priority
+            </button>
+        </div>
+        <div>
+            <br> </div>
+        <!--     ng-repeat directive creates the loop.  list is name I gave it, addList is from the function.  orderBy is a javascript name.  The pipe acts as the filter.  -->
+        <div ng-repeat='list in addList | orderBy: sortType'>
+            <table border="1" padding="54" id="table" class="table container table-striped">
+                <!--  <th>Click to Sort by Todo Item Name</th>
+                <th >Click to Sort by Priority</th> -->
+                <!-- the ng-style directive changes the color of the td cell with the switch function
+                getTrColor from the priority selected property. -->
+                <tr>
+                    <td ng-style="{'background-color' : getTrColor(list.priority) } ">
+                        <!-- this expression is one-way data binding from model, scope to view -->
+                        {{list.name}}
+                    </td>
+                    <div></div>
+                    <label class="backColor" for="priority">Priority </label>
+                    <!-- ng-model directive takes data from priority selected pushes to scope so it can tie in with the switch function.  numeric values are referenced in function -->
+                    <select class="form-control" ng-model="list.priority" name="priority">
+                        <option value="1">High</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Low</option>
+                    </select>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- inject:js   custom-->
+    <script src="app/app.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>

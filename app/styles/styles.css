@@ -1,0 +1,35 @@
+.form-control {
+    height: 20px;
+    width: 100px;
+}
+
+label {
+    background-color: white;
+    width: 100px;
+    color: green;
+}
+
+.alert-info {
+    background-color: white !important;
+    width: 210px;
+}
+
+.backColor {}
+
+button {}
+
+p {
+    color: red;
+}
+
+.container {
+    width: 400px;
+    /*	padding-left: 60px;*/
+    padding-top: 30px;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
